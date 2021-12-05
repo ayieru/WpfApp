@@ -5,9 +5,28 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        <Button Content="押さないで！" HorizontalAlignment="Left" Margin="200,100,0,0" VerticalAlignment="Top" Width="134" Height="77" Click="Button_Click"/>
+        Title="アイコンエディター" Height="450" Width="800">
+    <Grid Background="Black">
 
+        <!--グリッドの作成-->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <!--メニュー画面-->
+        <Menu Grid.Row="0" Height="Auto">
+            <MenuItem Header="ファイル(_F)">
+                <MenuItem x:Name="MenuItem_New" Header="新規作成(_N)...">
+                </MenuItem>
+                <MenuItem x:Name="MenuItem_Open" Header="開く(_O)...">
+                </MenuItem>
+            </MenuItem>
+
+            <MenuItem Header="編集(_E)">
+            </MenuItem>
+        </Menu>
+        
+        <Canvas Grid.Row="1" x:Name="MainCanvas" Height="640" Width="640" Background="#FF04D1FF" Initialized="MainCanvas_Initialized"/>
     </Grid>
 </Window>
