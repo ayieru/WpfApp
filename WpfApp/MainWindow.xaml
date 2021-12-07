@@ -17,9 +17,31 @@
         <!--メニュー画面-->
         <Menu Grid.Row="0" Height="Auto">
             <MenuItem Header="ファイル(_F)">
-                <MenuItem x:Name="MenuItem_New" Header="新規作成(_N)...">
+                <MenuItem x:Name="MenuItem_New" Header="新規作成(N)...">
+                    <MenuItem.Icon>
+                        <Image Source="images/NewFile_16x.png"/>
+                    </MenuItem.Icon>
                 </MenuItem>
-                <MenuItem x:Name="MenuItem_Open" Header="開く(_O)...">
+                <MenuItem x:Name="MenuItem_Open" Header="開く(O)...">
+                    <MenuItem.Icon>
+                        <Image Source="images/OpenFile_16x.png"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem x:Name="MenuItem_Save" Header="上書き保存(S)">
+                    <MenuItem.Icon>
+                        <Image Source="images/Save_grey_16x.png"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem x:Name="MenuItem_NameSave" Header="名前を付けて上書き保存(A)" Checked="MenuItem_NameSave_Checked">
+                    <MenuItem.Icon>
+                        <Image Source="images/SaveAs_16.png"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <Separator/>
+                <MenuItem x:Name="MenuItem_End" Header="終了(X)">
+                    <MenuItem.Icon>
+                        <Image Source="images/Exit_16x.png"/>
+                    </MenuItem.Icon>
                 </MenuItem>
             </MenuItem>
 
@@ -28,5 +50,7 @@
         </Menu>
         
         <Canvas Grid.Row="1" x:Name="MainCanvas" Height="640" Width="640" Background="#FF04D1FF" Initialized="MainCanvas_Initialized"/>
+
+        
     </Grid>
 </Window>
