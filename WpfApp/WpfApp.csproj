@@ -10,7 +10,9 @@
 
   <ItemGroup>
     <None Remove="images\Brush_16x.png" />
+    <None Remove="images\Cancel_16x.png" />
     <None Remove="images\Cancel_7x_16x.png" />
+    <None Remove="images\Copy_16x.png" />
     <None Remove="images\Cut_16x.png" />
     <None Remove="images\Edit_16x.png" />
     <None Remove="images\Eraser_16x.png" />
@@ -22,6 +24,7 @@
     <None Remove="images\Redo_grey_16x.png" />
     <None Remove="images\SaveAs_16x.png" />
     <None Remove="images\Save_grey_16x.png" />
+    <None Remove="images\Select_16x.png" />
     <None Remove="images\Undo_grey_16x.png" />
     <None Remove="images\ZoomIn_16x.png" />
     <None Remove="images\ZoomOriginalSize_16x.png" />
@@ -31,7 +34,9 @@
 
   <ItemGroup>
     <Resource Include="images\Brush_16x.png" />
+    <Resource Include="images\Cancel_16x.png" />
     <Resource Include="images\Cancel_7x_16x.png" />
+    <Resource Include="images\Copy_16x.png" />
     <Resource Include="images\Cut_16x.png" />
     <Resource Include="images\Edit_16x.png" />
     <Resource Include="images\Eraser_16x.png" />
@@ -43,6 +48,7 @@
     <Resource Include="images\Redo_grey_16x.png" />
     <Resource Include="images\SaveAs_16x.png" />
     <Resource Include="images\Save_grey_16x.png" />
+    <Resource Include="images\Select_16x.png" />
     <Resource Include="images\Undo_grey_16x.png" />
     <Resource Include="images\ZoomIn_16x.png" />
     <Resource Include="images\ZoomOriginalSize_16x.png" />

@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:WpfApp"
         mc:Ignorable="d"
         Title="アイコンエディター" Height="450" Width="800">
-    <Grid Background="Black">
+    <Grid Background="#FF2D2D30">
 
         <!--グリッドの作成-->
         <Grid.RowDefinitions>
@@ -34,7 +34,7 @@
                 </MenuItem>
                 <MenuItem x:Name="MenuItem_NameSave" Header="名前を付けて上書き保存(A)" Checked="MenuItem_NameSave_Checked">
                     <MenuItem.Icon>
-                        <Image Source="images/SaveAs_16.png"/>
+                        <Image Source="images/SaveAs_16x.png"/>
                     </MenuItem.Icon>
                 </MenuItem>
                 <Separator/>
@@ -46,11 +46,46 @@
             </MenuItem>
 
             <MenuItem Header="編集(_E)">
+                <MenuItem x:Name="MenuItem_Undo" Header="元に戻す(_U)">
+                    <MenuItem.Icon>
+                        <Image Source="images/Undo_grey_16x.png"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem x:Name="MenuItem_Redo" Header="やり直し(_R)">
+                    <MenuItem.Icon>
+                        <Image Source="images/Redo_grey_16x.png"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <Separator/>
+                <MenuItem x:Name="MenuItem_Cut" Header="切り取り(_T)">
+                    <MenuItem.Icon>
+                        <Image Source="images/Cut_16x.png"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem x:Name="MenuItem_Copy" Header="コピー(_C)">
+                    <MenuItem.Icon>
+                        <Image Source="images/Copy_16x.png"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem x:Name="MenuItem_paste" Header="貼り付け(_P)">
+                    <MenuItem.Icon>
+                        <Image Source="images/Paste_16x.png"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem x:Name="MenuItem_Delete" Header="削除(_D)">
+                    <MenuItem.Icon>
+                        <Image Source="images/Cancel_16x.png"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+            </MenuItem>
+            <MenuItem Header="表示(_V)">
+            </MenuItem>
+            <MenuItem Header="ヘルプ(_H)">
             </MenuItem>
         </Menu>
-        
+
         <Canvas Grid.Row="1" x:Name="MainCanvas" Height="640" Width="640" Background="#FF04D1FF" Initialized="MainCanvas_Initialized"/>
 
-        
+
     </Grid>
 </Window>

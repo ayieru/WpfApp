@@ -72,5 +72,10 @@ namespace WpfApp
         {
 
         }
+
+        private void MenuItem_Delete_Checked(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
