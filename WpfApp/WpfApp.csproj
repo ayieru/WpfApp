@@ -4,6 +4,64 @@
     <OutputType>WinExe</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <UseWPF>true</UseWPF>
+    <ApplicationIcon />
+    <Win32Resource />
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="images\Brush_16x.png" />
+    <None Remove="images\Cancel_7x_16x.png" />
+    <None Remove="images\Cut_16x.png" />
+    <None Remove="images\Edit_16x.png" />
+    <None Remove="images\Eraser_16x.png" />
+    <None Remove="images\Exit_16x.png" />
+    <None Remove="images\F1Help_16x.png" />
+    <None Remove="images\NewFile_16x.png" />
+    <None Remove="images\OpenFile_16x.png" />
+    <None Remove="images\Paste_16x.png" />
+    <None Remove="images\Redo_grey_16x.png" />
+    <None Remove="images\SaveAs_16x.png" />
+    <None Remove="images\Save_grey_16x.png" />
+    <None Remove="images\Undo_grey_16x.png" />
+    <None Remove="images\ZoomIn_16x.png" />
+    <None Remove="images\ZoomOriginalSize_16x.png" />
+    <None Remove="images\ZoomOut_16x.png" />
+    <None Remove="images\Zoom_16x.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="images\Brush_16x.png" />
+    <Resource Include="images\Cancel_7x_16x.png" />
+    <Resource Include="images\Cut_16x.png" />
+    <Resource Include="images\Edit_16x.png" />
+    <Resource Include="images\Eraser_16x.png" />
+    <Resource Include="images\Exit_16x.png" />
+    <Resource Include="images\F1Help_16x.png" />
+    <Resource Include="images\NewFile_16x.png" />
+    <Resource Include="images\OpenFile_16x.png" />
+    <Resource Include="images\Paste_16x.png" />
+    <Resource Include="images\Redo_grey_16x.png" />
+    <Resource Include="images\SaveAs_16x.png" />
+    <Resource Include="images\Save_grey_16x.png" />
+    <Resource Include="images\Undo_grey_16x.png" />
+    <Resource Include="images\ZoomIn_16x.png" />
+    <Resource Include="images\ZoomOriginalSize_16x.png" />
+    <Resource Include="images\ZoomOut_16x.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Properties\Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
 
 </Project>

@@ -67,5 +67,10 @@ namespace WpfApp
                 rect.Fill = new SolidColorBrush(Color.FromArgb(255, 0, 0, 255));
             }
         }
+
+        private void MenuItem_NameSave_Checked(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
