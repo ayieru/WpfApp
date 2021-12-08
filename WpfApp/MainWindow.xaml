@@ -11,6 +11,7 @@
         <!--グリッドの作成-->
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
 
@@ -38,7 +39,7 @@
                     </MenuItem.Icon>
                 </MenuItem>
                 <Separator/>
-                <MenuItem x:Name="MenuItem_End" Header="終了(X)">
+                <MenuItem x:Name="MenuItem_End" Header="終了(X)" Checked="MenuItem_End_Checked">
                     <MenuItem.Icon>
                         <Image Source="images/Exit_16x.png"/>
                     </MenuItem.Icon>
@@ -79,13 +80,57 @@
                 </MenuItem>
             </MenuItem>
             <MenuItem Header="表示(_V)">
-            </MenuItem>
-            <MenuItem Header="ヘルプ(_H)">
+
+                <MenuItem x:Name="MenuItem_ZoomIn" Header="拡大(_D)">
+                    <MenuItem.Icon>
+                        <Image Source="/images/ZoomIn_16x.png" />
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem x:Name="MenuItem_ZoomOut" Header="縮小(_D)">
+                    <MenuItem.Icon>
+                        <Image Source="/images/ZoomOut_16x.png" />
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="ヘルプ(_H)">
+                </MenuItem>
             </MenuItem>
         </Menu>
 
-        <Canvas Grid.Row="1" x:Name="MainCanvas" Height="640" Width="640" Background="#FF04D1FF" Initialized="MainCanvas_Initialized"/>
+        <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="0" Background="White">
+            <Button Padding="10" BorderBrush="{x:Null}" Background="{x:Null}">
+                <Image Source="images/NewFile_16x.png"/>
+            </Button>
+            <Label Name="ZoomLabel" Content="100%" Width="40" HorizontalContentAlignment="Right" VerticalContentAlignment="Center"/>
+            <Button Background="{x:Null}" BorderBrush="{x:Null}" Click="MenuItem_ZoomOut_Click">
+                <Image Source="/images/ZoomOut_16x.png" />
+            </Button>
+            <Slider x:Name="Slider_Zoom" VerticalAlignment="Center" Width="160"
+                   IsSnapToTickEnabled="True"
+                    Minimum="25"
+                    Maximum="400"
+                    Ticks="25,50,75,100,125,150,200,300,400"
+                    Value="100" VerticalContentAlignment="Center" ValueChanged="Slider_Zoom_ValueChanged"/>
 
+            <Button Background="{x:Null}" BorderBrush="{x:Null}" Click="MenuItem_ZoomIn_Click">
+                <Image Source="images/ZoomIn_16x.png" VerticalAlignment="Center"/>
+            </Button>
+        </StackPanel>
 
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="200"/>
+            </Grid.ColumnDefinitions>
+
+            <ScrollViewer Grid.Row="2" Name="ScrollViewer" VerticalScrollBarVisibility="auto"
+                          HorizontalScrollBarVisibility="Auto" Background="AliceBlue" Foreground="{x:Null}">
+                <Canvas x:Name="MainCanvas" Height="640" Width="640" Initialized="MainCanvas_Initialized" Background="Aqua">
+                    <Canvas.RenderTransform>
+                        <MatrixTransform x:Name="matrixTransform"/>
+                    </Canvas.RenderTransform>
+                </Canvas>
+            </ScrollViewer>
+        </Grid>
     </Grid>
 </Window>

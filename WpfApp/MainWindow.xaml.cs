@@ -77,5 +77,44 @@ namespace WpfApp
         {
 
         }
+
+        private void MenuItem_End_Checked(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
+
+        private void Slider_Zoom_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            if (MainCanvas == null) return;
+
+            Matrix matrix = new Matrix();
+            matrix.Scale(Slider_Zoom.Value * 0.01, Slider_Zoom.Value * 0.01);
+            matrixTransform.Matrix = matrix;
+
+            ZoomLabel.Content = Slider_Zoom.Value + "%";
+
+            MainCanvas.Width = 640 * Slider_Zoom.Value * 0.01;
+            MainCanvas.Height = 640 * Slider_Zoom.Value * 0.01;
+        }
+
+        private void MenuItem_ZoomOut_Click(object sender, RoutedEventArgs e)
+        {
+            int index = Slider_Zoom.Ticks.IndexOf(Slider_Zoom.Value);
+            index--;
+
+            if (index < 0) return;
+
+            Slider_Zoom.Value = Slider_Zoom.Ticks[index];
+        }
+
+        private void MenuItem_ZoomIn_Click(object sender, RoutedEventArgs e)
+        {
+            int index = Slider_Zoom.Ticks.IndexOf(Slider_Zoom.Value);
+            index++;
+
+            if (Slider_Zoom.Ticks.Count <= index) return;
+
+            Slider_Zoom.Value = Slider_Zoom.Ticks[index];
+        }
     }
 }
