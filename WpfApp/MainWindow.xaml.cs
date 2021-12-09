@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Runtime.InteropServices;
 
 namespace WpfApp
 {
@@ -55,7 +56,8 @@ namespace WpfApp
         private void Rectangle_MouseDown(object sender,MouseButtonEventArgs e)
         {
             Rectangle rect = (Rectangle)sender;
-            rect.Fill = new SolidColorBrush(Color.FromArgb(255, 0, 0, 255));
+            SolidColorBrush solidColorBrush = (SolidColorBrush)ColorPalette.Fill;
+            rect.Fill = new SolidColorBrush(solidColorBrush.Color);
         }
 
         private void Rectangle_MouseMove(object sender, MouseEventArgs e)
@@ -64,16 +66,12 @@ namespace WpfApp
 
             if (e.LeftButton == MouseButtonState.Pressed)
             {
-                rect.Fill = new SolidColorBrush(Color.FromArgb(255, 0, 0, 255));
+                SolidColorBrush solidColorBrush = (SolidColorBrush)ColorPalette.Fill;
+                rect.Fill = new SolidColorBrush(solidColorBrush.Color);
             }
         }
 
         private void MenuItem_NameSave_Checked(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void MenuItem_Delete_Checked(object sender, RoutedEventArgs e)
         {
 
         }
@@ -115,6 +113,31 @@ namespace WpfApp
             if (Slider_Zoom.Ticks.Count <= index) return;
 
             Slider_Zoom.Value = Slider_Zoom.Ticks[index];
+        }
+
+        private void MenuItem_About_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Icon Editor\nVersion 0.0.1",
+                "Icon Editorのバージョン情報",
+                MessageBoxButton.OK,
+                MessageBoxImage.Information,
+                MessageBoxResult.Yes);
+        }
+
+        private void ColorPalette_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            System.Windows.Forms.ColorDialog cd = new System.Windows.Forms.ColorDialog();
+
+            cd.FullOpen = true;
+
+            SolidColorBrush colorBrush = (SolidColorBrush)ColorPalette.Fill;
+            cd.Color = System.Drawing.Color.FromArgb(colorBrush.Color.A, colorBrush.Color.R, colorBrush.Color.G, colorBrush.Color.B);
+
+            if (cd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                Color color = Color.FromArgb(cd.Color.A, cd.Color.R, cd.Color.G, cd.Color.B);
+                ColorPalette.Fill = new SolidColorBrush(color);
+            }
         }
     }
 }
