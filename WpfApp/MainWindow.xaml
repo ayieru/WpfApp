@@ -5,7 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp"
         mc:Ignorable="d"
-        Title="アイコンエディター" Height="450" Width="800">
+        Title="アイコンエディター" Height="450" Width="800"
+        xmlns:ui="http://schemas.modernwpf.com/2019"
+        ui:WindowHelper.UseModernWindowStyle="True">
+    
     <Grid Background="#FF2D2D30">
 
         <!--グリッドの作成-->
@@ -81,17 +84,20 @@
             </MenuItem>
             <MenuItem Header="表示(_V)">
 
-                <MenuItem x:Name="MenuItem_ZoomIn" Header="拡大(_D)">
+                <MenuItem x:Name="MenuItem_ZoomIn" Header="拡大(_D)" Click="MenuItem_ZoomIn_Click">
                     <MenuItem.Icon>
                         <Image Source="/images/ZoomIn_16x.png" />
                     </MenuItem.Icon>
                 </MenuItem>
-                <MenuItem x:Name="MenuItem_ZoomOut" Header="縮小(_D)">
+                <MenuItem x:Name="MenuItem_ZoomOut" Header="縮小(_D)" Click="MenuItem_ZoomOut_Click">
                     <MenuItem.Icon>
                         <Image Source="/images/ZoomOut_16x.png" />
                     </MenuItem.Icon>
                 </MenuItem>
                 <MenuItem Header="ヘルプ(_H)">
+                </MenuItem>
+                <Separator/>
+                <MenuItem x:Name="MenuItem_About" Header="バージョン情報(_A)" Checked="MenuItem_About_Click">
                 </MenuItem>
             </MenuItem>
         </Menu>
@@ -100,8 +106,17 @@
             <Button Padding="10" BorderBrush="{x:Null}" Background="{x:Null}">
                 <Image Source="images/NewFile_16x.png"/>
             </Button>
+            <Button Padding="10" BorderBrush="{x:Null}" Background="{x:Null}">
+                <Image Source="/images/Save_grey_16x.png" />
+            </Button>
+            <Button Padding="10" BorderBrush="{x:Null}" Background="{x:Null}">
+                <Image Source="images/Undo_grey_16x.png"/>
+            </Button>
+            <Button Padding="10" BorderBrush="{x:Null}" Background="{x:Null}">
+                <Image Source="/images/Redo_grey_16x.png" />
+            </Button>
             <Label Name="ZoomLabel" Content="100%" Width="40" HorizontalContentAlignment="Right" VerticalContentAlignment="Center"/>
-            <Button Background="{x:Null}" BorderBrush="{x:Null}" Click="MenuItem_ZoomOut_Click">
+            <Button Background="{x:Null}" BorderBrush="{x:Null}" Click="MenuItem_ZoomOut_Click" Padding="5">
                 <Image Source="/images/ZoomOut_16x.png" />
             </Button>
             <Slider x:Name="Slider_Zoom" VerticalAlignment="Center" Width="160"
@@ -111,11 +126,10 @@
                     Ticks="25,50,75,100,125,150,200,300,400"
                     Value="100" VerticalContentAlignment="Center" ValueChanged="Slider_Zoom_ValueChanged"/>
 
-            <Button Background="{x:Null}" BorderBrush="{x:Null}" Click="MenuItem_ZoomIn_Click">
+            <Button Background="{x:Null}" BorderBrush="{x:Null}" Click="MenuItem_ZoomIn_Click" Padding="5">
                 <Image Source="images/ZoomIn_16x.png" VerticalAlignment="Center"/>
             </Button>
         </StackPanel>
-
         <Grid Grid.Row="2">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
@@ -123,14 +137,27 @@
                 <ColumnDefinition Width="200"/>
             </Grid.ColumnDefinitions>
 
-            <ScrollViewer Grid.Row="2" Name="ScrollViewer" VerticalScrollBarVisibility="auto"
-                          HorizontalScrollBarVisibility="Auto" Background="AliceBlue" Foreground="{x:Null}">
+            <ScrollViewer Grid.Column="0" x:Name="ScrollViewer" VerticalScrollBarVisibility="auto"
+                          HorizontalScrollBarVisibility="Auto" Background="Aqua" Foreground="{x:Null}">
+                <!--下のカラーと同じにする-->
                 <Canvas x:Name="MainCanvas" Height="640" Width="640" Initialized="MainCanvas_Initialized" Background="Aqua">
                     <Canvas.RenderTransform>
                         <MatrixTransform x:Name="matrixTransform"/>
                     </Canvas.RenderTransform>
                 </Canvas>
             </ScrollViewer>
+
+            <GridSplitter Grid.Column="1" Width="4" HorizontalAlignment="Center" VerticalAlignment="Stretch" Background="#00000000"/>
+
+            <Grid Grid.Column="2" Background="#FFD4D4D4">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <Label Grid.Row="0" Content="カラーパレット" Margin="10"/>
+                <Rectangle Grid.Row="1" x:Name="ColorPalette" Height="30" Margin="10,0,10,10" Fill="Black" MouseDown="ColorPalette_MouseDown"/>
+            </Grid>
         </Grid>
     </Grid>
 </Window>
