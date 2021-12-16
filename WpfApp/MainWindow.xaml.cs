@@ -64,6 +64,15 @@ namespace WpfApp
         {
             Rectangle rect = (Rectangle)sender;
 
+            String text;
+
+            int x = (int)Canvas.GetLeft(rect) / 20;
+            int y = (int)Canvas.GetTop(rect) / 20;
+
+            text = "X:" + x.ToString() + "Y:" + y.ToString();
+
+            StatusBarLabel.Content = text;
+
             if (e.LeftButton == MouseButtonState.Pressed)
             {
                 SolidColorBrush solidColorBrush = (SolidColorBrush)ColorPalette.Fill;

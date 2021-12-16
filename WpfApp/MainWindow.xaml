@@ -8,18 +8,19 @@
         Title="アイコンエディター" Height="450" Width="800"
         xmlns:ui="http://schemas.modernwpf.com/2019"
         ui:WindowHelper.UseModernWindowStyle="True">
-    
-    <Grid Background="#FF2D2D30">
+
+    <Grid Background="White">
 
         <!--グリッドの作成-->
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
         <!--メニュー画面-->
-        <Menu Grid.Row="0" Height="Auto">
+        <Menu Grid.Row="0" Height="Auto" Foreground="#FF2D2D30" Background="#FF2D2D30">
             <MenuItem Header="ファイル(_F)">
                 <MenuItem x:Name="MenuItem_New" Header="新規作成(N)...">
                     <MenuItem.Icon>
@@ -101,8 +102,8 @@
                 </MenuItem>
             </MenuItem>
         </Menu>
-
-        <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="0" Background="White">
+        <!--ツールバー-->
+        <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="0" Background="#FF2D2D30">
             <Button Padding="10" BorderBrush="{x:Null}" Background="{x:Null}">
                 <Image Source="images/NewFile_16x.png"/>
             </Button>
@@ -130,17 +131,18 @@
                 <Image Source="images/ZoomIn_16x.png" VerticalAlignment="Center"/>
             </Button>
         </StackPanel>
+
         <Grid Grid.Row="2">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
-                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="200"/>
             </Grid.ColumnDefinitions>
 
             <ScrollViewer Grid.Column="0" x:Name="ScrollViewer" VerticalScrollBarVisibility="auto"
                           HorizontalScrollBarVisibility="Auto" Background="Aqua" Foreground="{x:Null}">
                 <!--下のカラーと同じにする-->
-                <Canvas x:Name="MainCanvas" Height="640" Width="640" Initialized="MainCanvas_Initialized" Background="Aqua">
+                <Canvas x:Name="MainCanvas" Height="640" Width="640" Initialized="MainCanvas_Initialized" Background="#FF0078D7">
                     <Canvas.RenderTransform>
                         <MatrixTransform x:Name="matrixTransform"/>
                     </Canvas.RenderTransform>
@@ -149,7 +151,7 @@
 
             <GridSplitter Grid.Column="1" Width="4" HorizontalAlignment="Center" VerticalAlignment="Stretch" Background="#00000000"/>
 
-            <Grid Grid.Column="2" Background="#FFD4D4D4">
+            <Grid Grid.Column="2" Background="#FF252526">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
@@ -159,5 +161,12 @@
                 <Rectangle Grid.Row="1" x:Name="ColorPalette" Height="30" Margin="10,0,10,10" Fill="Black" MouseDown="ColorPalette_MouseDown"/>
             </Grid>
         </Grid>
+
+        <StatusBar Grid.Row="3">
+            <Label Name="StatusBarLabel" Content=""/>
+            <Separator/>
+            <Label Name="StatusBarLabel2" Content="なんかかく"/>
+        </StatusBar>
+
     </Grid>
 </Window>
