@@ -102,6 +102,7 @@
                 </MenuItem>
             </MenuItem>
         </Menu>
+        
         <!--ツールバー-->
         <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="0" Background="#FF2D2D30">
             <Button Padding="10" BorderBrush="{x:Null}" Background="{x:Null}">
@@ -142,7 +143,7 @@
             <ScrollViewer Grid.Column="0" x:Name="ScrollViewer" VerticalScrollBarVisibility="auto"
                           HorizontalScrollBarVisibility="Auto" Background="Aqua" Foreground="{x:Null}">
                 <!--下のカラーと同じにする-->
-                <Canvas x:Name="MainCanvas" Height="640" Width="640" Initialized="MainCanvas_Initialized" Background="#FF0078D7">
+                <Canvas x:Name="MainCanvas" Height="640" Width="640" Initialized="MainCanvas_Initialized" Background="Aqua">
                     <Canvas.RenderTransform>
                         <MatrixTransform x:Name="matrixTransform"/>
                     </Canvas.RenderTransform>
